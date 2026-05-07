@@ -13,6 +13,7 @@ import {
   Legend,
   ArcElement,
 } from 'chart.js';
+import { API_BASE_URL } from '../config';
 import './Analytics.css';
 
 // Register Chart.js components
@@ -94,7 +95,7 @@ function Analytics() {
   const fetchAnalyticsData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/analytics/dashboard?timeframe=${timeframe}`, {
+      const response = await fetch(`${API_BASE_URL}/api/analytics/dashboard?timeframe=${timeframe}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -117,7 +118,7 @@ function Analytics() {
   const fetchRecommendations = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/analytics/recommendations', {
+      const response = await fetch(`${API_BASE_URL}/api/analytics/recommendations`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -416,7 +417,7 @@ function RecommendationPanel() {
     const fetchRecommendations = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/api/analytics/recommendations', {
+        const response = await fetch(`${API_BASE_URL}/api/analytics/recommendations`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

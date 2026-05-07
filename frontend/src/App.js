@@ -7,6 +7,7 @@ import ModernHeader from "./components/ModernHeader";
 import ModernGenerator from "./components/ModernGenerator";
 import ModernGallery from "./components/ModernGallery";
 import ModernLanding from "./components/ModernLanding";
+import { API_BASE_URL } from "./config";
 import './ModernApp.css';
 
 function HomePage() {
@@ -38,7 +39,7 @@ function HomePage() {
 
   const loadUserImages = async (token) => {
     try {
-      const response = await fetch("http://localhost:5000/api/generations/history", {
+      const response = await fetch(`${API_BASE_URL}/api/generations/history`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -87,7 +88,7 @@ function HomePage() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/generations", {
+      const response = await fetch(`${API_BASE_URL}/api/generations`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -176,7 +177,7 @@ function HomePage() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/generations/${imageId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/generations/${imageId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`
